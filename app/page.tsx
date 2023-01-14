@@ -1,7 +1,9 @@
 import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
-import Monke1 from '../public/assets/img/monke1.png'
-import Monke2 from '../public/assets/img/monke2.png'
+import Monke1 from '../public/assets/img/monke/monke1.png'
+import Monke2 from '../public/assets/img/monke/monke2.png'
+import Monke3 from '../public/assets/img/monke/monke3.png'
 import ExpressLogo from '../public/assets/img/logos/expressLogo.png'
 import FlaskLogo from '../public/assets/img/logos/flaskLogo.png'
 import JavaLogo from '../public/assets/img/logos/javaLogo.png'
@@ -20,40 +22,104 @@ const tourney = Tourney({ weight: '900', subsets: ['latin'] });
 const josefin_sans = Josefin_Sans({ weight: '300', subsets: ['latin'] });
 
 const logos = [
-    PythonLogo, JavaLogo, JavaScriptLogo,
-    FlaskLogo, ExpressLogo, SpringLogo,
-    MySQLLogo, MongoDBLogo, RedisLogo,
-    ServerlessLogo, ReactLogo, MUILogo
+    {
+        logo: PythonLogo,
+        name: 'Python',
+    },
+    {
+        logo: FlaskLogo,
+        name: 'Flask',
+    },
+    {
+        logo: MySQLLogo,
+        name: 'MySQL',
+    },
+    {
+        logo: ServerlessLogo,
+        name: 'Serverless',
+    },
+    {
+        logo: JavaScriptLogo,
+        name: 'JavaScript',
+    },
+    {
+        logo: ExpressLogo,
+        name: 'Express',
+    },
+    {
+        logo: MongoDBLogo,
+        name: 'MongoDB',
+    },
+    {
+        logo: MUILogo,
+        name: 'Material UI',
+    },
+    {
+        logo: JavaLogo,
+        name: 'Java',
+    },
+    {
+        logo: SpringLogo,
+        name: 'SpringBoot',
+    },
+    {
+        logo: RedisLogo,
+        name: 'Redis',
+    },
+    {
+        logo: ReactLogo,
+        name: 'React',
+    },
 ]
+
 
 function HomePage() {
     return (
         <div className='homePage'>
             <div>
-                <h2 className={tourney.className}>About Me</h2>
-                <div className='textBox'>
+                <h2 className={`${tourney.className} load1`}>About Me</h2>
+                <div className='textBox load2'>
                     <p className={josefin_sans.className}>
                         I am a <strong>Full Stack</strong> developer based in the <strong>San Diego</strong> area with experience building and deploying web applications in <strong>Python</strong>, <strong>Java</strong>, & <strong>JavaScript</strong>.
                     </p>
                 </div>
-                <h2 className={tourney.className}>Skills</h2>
-                <div className={`textBox ${josefin_sans.className}`}>
+                <h2 className={`${tourney.className} load3`}>Skills</h2>
+                <div className={`textBox skillsBox ${josefin_sans.className} load4`}>
                     {
-
+                        logos.map((logo, i) => {
+                            return (
+                                <div className='skillIconCont'>
+                                    <Image
+                                        key={`logo${i}`}
+                                        className="skillIcon"
+                                        src={logo.logo}
+                                        alt={logo.name}
+                                    />
+                                    <h5>{logo.name}</h5>
+                                </div>
+                            )
+                        })
                     }
-                    <Image
-                        className="skillIcon"
-                        src={ExpressLogo}
-                        alt="ExpressLogo"
-                    />
                 </div>
             </div>
-            <div className='bottomMonkeyCont'>
+            <div className='bottomMonkeyCont load5'>
                 <Image
                     className="bottomMonkey"
                     src={Monke1}
                     alt="Purple monkey 1"
                 />
+                <div className='resumeCont'>
+                    <div className={`resumeBox ${josefin_sans.className}`}>
+                        <p id='resumeBox'>Click <Link href='/assets/resume.pdf' target="_blank" rel="noopener noreferrer"><strong>here</strong></Link> for my complete resume.</p>
+                    </div>
+                    <div className='bottomGorillaCont'>
+                        <Image
+                            className="bottomGorilla"
+                            src={Monke3}
+                            alt="Purple gorilla"
+                        />
+                    </div>
+                </div>
                 <Image
                     className="bottomMonkey"
                     src={Monke2}

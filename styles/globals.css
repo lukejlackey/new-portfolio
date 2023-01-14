@@ -12,34 +12,69 @@ body {
 }
 
 header {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 10vh;
   position: fixed;
   top: 0;
   background-color: rgb(43, 31, 17);
-  padding: 1rem 0;
   box-shadow: 0 0 2rem rgb(0, 0, 0);
 }
 
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes slideInAnimation {
+  0% {
+    transform: translateX(-50vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUpAnimation {
+  0% {
+    transform: translateY(50vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 main {
-  min-height: 100vh;
+  background-color: rgb(28, 28, 28);
+  min-height: 85vh;
   min-width: 100vw;
-  padding-top: 10vh;
-  padding-bottom: 4vh;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   scroll-behavior: smooth;
-  overflow: scroll hidden;
+  overflow: hidden;
 }
 
 footer {
+  transition: 0.5s ease-in;
   position: fixed;
   bottom: 0;
-  min-height: 5vh;
+  height: 5vh;
   width: 100vw;
   background-color: rgb(43, 31, 17);
-  padding: 1rem 0;
+  padding: 3vh 0;
   color: rgb(153, 134, 93);
   display: flex;
   justify-content: center;
@@ -47,11 +82,13 @@ footer {
 }
 
 nav {
+  transition: 0.5s ease-in;
   width: 100vw;
-  height: 100%;
+  min-height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 1rem 0;
 }
 
 
@@ -69,6 +106,7 @@ h2 {
 }
 
 a {
+  transition: 0.5s ease-in;
   color: inherit;
   text-decoration: none;
   padding: 0;
@@ -76,37 +114,81 @@ a {
   text-align: center;
 }
 
+img {
+  transition: 0.5s ease-in-out;
+}
 
 /* Classes */
 
+
 .homePage {
-  height: 100vh;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  min-height: 85vh;
   width: 100vw;
   background-image: url('../public/assets/img/dunes.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
-.mainLink {
+.projectsPage {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  min-height: 85vh;
+  width: 100vw;
+  background-image: url('../public/assets/img/dunes2.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.projects {
+  background-color: rgb(0, 0, 0);
+  color: rgb(23, 182, 174);
+}
+
+.projects img {
+  filter: hue-rotate(100deg);
+}
+
+.MainLink {
   width: 50%;
   font-size: 4rem;
   color: rgb(133, 63, 160);
   text-shadow: -2px 2px 1px rgb(180, 155, 190), -4px 4px 0 rgb(133, 63, 160);
 }
 
-.subLink {
+.projectsMainLink {
+  width: 50%;
+  font-size: 4rem;
+  color: rgb(121, 0, 0);
+  text-shadow: -2px 2px 1px rgb(192, 105, 105), -4px 4px 0 rgb(121, 0, 0);
+}
+
+.SubLink {
   width: 25%;
   font-size: 2rem;
   color: rgb(151, 103, 0);
   text-shadow: -1px 1px 1px rgb(187, 171, 135), -2px 2px 0 rgb(151, 103, 0);
 }
 
+.projectsSubLink {
+  width: 25%;
+  font-size: 2rem;
+  color: rgb(23, 182, 174);
+  text-shadow: -1px 1px 1px rgb(219, 255, 255), -2px 2px 0 rgb(23, 182, 174);
+}
+
 .textBox {
   margin: 2rem auto;
-  width: 66vw;
+  max-width: 66vw;
   text-align: center;
   padding: 1rem;
   background-color: rgb(43, 31, 17);
@@ -116,8 +198,49 @@ a {
   color: rgb(178, 150, 90);
 }
 
-.textBox strong {
+.textBox strong,
+a {
   color: rgb(179, 122, 1);
+}
+
+.resumeBox {
+  height: 100%;
+  max-width: 66vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(43, 31, 17);
+  box-shadow: inset -2px -2px 0 rgb(151, 103, 0), inset 2px 2px 0 rgb(151, 103, 0);
+  border: 3px solid rgb(43, 31, 17);
+  font-size: 2rem;
+  color: rgb(178, 150, 90);
+}
+
+.skillsBox {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+}
+
+.skillIconCont {
+  margin: 1rem;
+}
+
+.skillIcon {
+  height: 5rem;
+  width: 5rem;
+}
+
+.longingMonkey {
+  max-width: 33vw;
+  max-height: 50vh;
+  height: auto;
+  width: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .bottomMonkeyCont {
@@ -127,10 +250,164 @@ a {
 }
 
 .bottomMonkey {
-  width: 23rem;
-  height: 20rem;
+  max-width: 33vw;
+  width: 33vw;
+  height: auto;
+}
+
+.bottomGorilla {
+  max-width: 33vw;
+  width: 33vw;
+  height: auto;
+}
+
+.bottomGorillaCont {
+  max-height: fit-content;
+}
+
+.resumeCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: auto;
 }
 
 .madeBy {
   margin: 0 1rem;
+}
+
+.load1 {
+  animation: slideInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.load2 {
+  animation: slideInAnimation ease 2.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.load3 {
+  animation: slideInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.load4 {
+  animation: slideInAnimation ease 3.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.load5 {
+  animation: slideUpAnimation ease 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Media Queries */
+/* Breakpoint for screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+
+  /* Styles for screens smaller than 600px */
+  body {
+    font-size: 12px;
+  }
+
+  main {
+    margin-top: 6rem
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  h2 {
+    max-width: 90vw;
+    width: 75vw;
+    margin: 3rem auto;
+  }
+
+  .MainLink,
+  .projectsMainLink {
+    width: 90vw;
+    order: 1;
+    font-size: 2rem;
+  }
+
+  .SubLink,
+  .projectsSubLink {
+    width: 90vw;
+    order: 2;
+    font-size: 1.25rem;
+  }
+
+  .textBox {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .skillsBox {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    justify-content: space-evenly;
+    align-content: space-evenly;
+  }
+
+  .skillIconCont {
+    font-size: 1rem;
+  }
+
+  .bottomMonkey {
+    display: none;
+  }
+
+  .resumeCont {
+    margin: auto;
+  }
+
+}
+
+/* Breakpoint for screens larger than 600px and smaller than 900px */
+@media only screen and (min-width: 600px) and (max-width: 913px) {
+
+  /* Styles for screens between 600px and 900px */
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main {
+    margin-top: 10vh;
+    padding-top: 0;
+  }
+
+  .textBox {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .MainLink,
+  .projectsMainLink {
+    font-size: 3rem;
+  }
+}
+
+/* Breakpoint for screens larger than 900px */
+@media only screen and (min-width: 913px) {
+
+  /* Styles for screens larger than 900px */
+  body {
+    font-size: 20px;
+  }
+
+  .resumeBox {
+    font-size: 3vw;
+  }
 }
