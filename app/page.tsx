@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Monke1 from '../public/assets/img/monke/monke1.png'
 import Monke2 from '../public/assets/img/monke/monke2.png'
 import Monke3 from '../public/assets/img/monke/monke3.png'
+import SideMonke1 from '../public/assets/img/monke/sideMonke1.png'
+import SideMonke2 from '../public/assets/img/monke/sideMonke2.png'
 import ExpressLogo from '../public/assets/img/logos/expressLogo.png'
 import FlaskLogo from '../public/assets/img/logos/flaskLogo.png'
 import JavaLogo from '../public/assets/img/logos/javaLogo.png'
@@ -76,14 +78,26 @@ const logos = [
 function HomePage() {
     return (
         <div className='homePage'>
+            <div className="sideMonkeyCont">
+                <Image
+                    className="sideMonkey load6"
+                    src={SideMonke1}
+                    alt="Side purple monkey 1"
+                />
+                <Image
+                    className="sideMonkey load7"
+                    src={SideMonke2}
+                    alt="Side purple monkey 2"
+                />
+            </div>
             <div>
-                <h2 className={`${tourney.className} load1`}>About Me</h2>
+                <h2 className={`${tourney.className} mainTitle load1`}>About Me</h2>
                 <div className='textBox load2'>
                     <p className={josefin_sans.className}>
                         I am a <strong>Full Stack</strong> developer based in the <strong>San Diego</strong> area with experience building and deploying web applications in <strong>Python</strong>, <strong>Java</strong>, & <strong>JavaScript</strong>.
                     </p>
                 </div>
-                <h2 className={`${tourney.className} load3`}>Skills</h2>
+                <h2 className={`${tourney.className} mainTitle load3`}>Skills</h2>
                 <div className={`textBox skillsBox ${josefin_sans.className} load4`}>
                     {
                         logos.map((logo, i) => {
